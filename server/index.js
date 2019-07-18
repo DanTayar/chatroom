@@ -74,7 +74,7 @@ app.get('/message/:room', (req, res) => {
 
 app.post('/message', (req, res)=> {
 	Message.create(req.body)
-	.then(response=> res.status(201))
+	.then(response=> res.status(201).json( {created: response.dataValues }))
 	.catch(err=> console.error(err) || res.status(500).json({ err }))
 });
 
